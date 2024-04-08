@@ -37,7 +37,7 @@ serverFiles:
             summary: PersistentVolume is having issues with provisioning.
         # Alert if pod is restarting more than once every 5 minutes
         - alert: KubePodCrashLooping
-          expr: rate(kube_pod_container_status_restarts_total{job="kubernetes-service-endpoints",namespace=~".*"}[5m]) * 𝟼𝟶 * 𝟻 > 𝟶
+          expr: rate(kube_pod_container_status_restarts_total{job="kubernetes-service-endpoints",namespace=~".*"}[5m]) * 60 * 5 > 0
           for: 2m
           labels:
             severity: warning
